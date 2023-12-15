@@ -1,0 +1,55 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Register for an account" %}{% endblock %}
+
+{% block content %}
+<style>
+    body
+    {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+        background-image: url('https://img.freepik.com/premium-photo/educational-concept-books-blue_387680-275.jpg');
+        background-size: cover;
+        
+    }
+    .card {
+      width: 1000px;
+      margin: 0 auto;
+      margin-top: 50px;
+      padding: 20px;
+      background-color:rgba(14, 15, 14, 0.562);
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(16, 15, 15, 0.502);
+      color: rgb(5, 140, 237);
+    }
+</style>
+<script src="https://img.freepik.com/premium-photo/educational-concept-books-blue_387680-275.jpg"></script>
+<script>bubbly();</script>
+<b>
+    <div class="container">
+        <div class="card">
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <label>phone number</label>
+    <input type="phone number">
+   <center><input type="submit" value="{% trans 'Submit' %}" /></center></div>
+</form></div>
+</b>
+{% endblock %}
+
+
+{% comment %}
+**registration/registration_form.html**
+Used to show the form users will fill out to register. By default, has
+the following context:
+
+``form``
+    The registration form. This will be an instance of some subclass
+    of ``django.forms.Form``; consult `Django's forms documentation
+    <http://docs.djangoproject.com/en/dev/topics/forms/>`_ for
+    information on how to display this in a template.
+{% endcomment %}

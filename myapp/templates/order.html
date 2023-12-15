@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body
+    {
+        font-size: large;
+    }
+</style>
+<center>
+    <div class="card border-primary"> 
+<h1><b>Cart:</b></h1><br>
+<b>{% for i in items %}
+{{i.product}}<br>
+{% endfor %}
+Pay:₹{{total}}</b>
+<h1>Show me the money!</h1>
+<!-- writes out the form tag automatically -->
+{{ form.render }}
+</div>
+</center>
+{% endblock %}

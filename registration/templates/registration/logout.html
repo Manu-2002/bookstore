@@ -1,0 +1,34 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Logged out" %}{% endblock %}
+
+{% block content %}
+<style>
+    body
+    {
+        background-image: url('https://www.grandmanors.com/hubfs/Thank%20You.jpeg');
+        background-size: cover;
+    }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center><b><h1>{% trans "Successfully logged out" %}.</h1></b>
+<a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'auth_login' %}">Login</a></center>
+{% endblock %}

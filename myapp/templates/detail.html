@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="card border-success">
+<div class="row">
+    &nbsp;<div class="col-md-6">
+  &nbsp; <b>{{d.title}}</b><br>
+    &nbsp; {{d.description}}<br>
+     <br><h2>₹{{d.price}}</h2><br>
+      </div>
+    <div class="col-md-4">
+       <br> <img src="{{d.img.url}}" width=400 height="500">
+    </div>
+
+</div>
+{% if user.is_authenticated %}
+  <form action="{% url 'myapp:detail' d.id d.slug %}" method="post">
+    {% csrf_token %}
+    {{ f }}
+   <input type="submit" class="btn btn-outline-success" value="Add to Cart">
+</form>
+{% else %}
+<p>To order the book please <a href="{% url 'auth_login' %}">login</a></p>
+{% endif %}
+
+<center><form action="{% url 'myapp:review' d.id d.slug %}" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-outline-dark" value="Add to Reviews">
+</form></center><br>
+<div class="container">
+	<h6>Reviews:</h6>
+    
+    {% for i in reviews %}
+
+    {{forloop.counter}} - {{i.review}} <br>
+    at {{i.created_at}} by {{user}} <br>
+
+    {% endfor %}
+
+</div>
+</div>
+</div>
+{% endblock %}

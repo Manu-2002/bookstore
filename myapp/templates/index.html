@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row"><br>
+    {% for i in p %}
+    <div class="w3-container">
+    <br>
+    <div class="col-md-6">
+      <div class="card border-primary mb-1" style="width: 25rex; height: 25rem;">
+      <b>{{i.title}}</b></a>
+      <center><img src="{{i.img.url}}" width=190 height=180 alt=""><br></center><br>
+      <b>&nbsp;&nbsp;₹{{i.price}}</b>
+      {% if i.book_available is True %}
+      <center><b><li class="text-success">IN STOCK</li></b></center>
+      <center><a class="btn btn-outline-primary my-2 my-sm-3" style="width: 3cm;" href="{% url 'myapp:detail' i.id i.slug %}">View</a></center>
+      <br>
+      {% else %}
+      <br><center><b><li class="text-danger">Out of stock</li></b></center>
+      {% endif %}
+    </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+
+{% endblock %}

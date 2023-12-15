@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body
+    {
+        background-color: darksalmon;
+    }
+</style>
+<div class="container">
+<div class="card border-success" >
+<div class="row">
+   &nbsp; <div class="col-md-6">
+   &nbsp; <b>{{d.title}}</b><br>
+   &nbsp; {{d.description}}<br>
+  <br> <h2>₹{{d.price}}</h2>
+   <br>
+    </div>
+    <div class="col-md-4">
+        <img src="{{d.img.url}}" width=400 height="500">
+    </div></div>
+    <form action="{% url 'myapp:detail' d.id d.slug %}" method="post">
+        {% csrf_token %}
+        {{ f }}
+       &nbsp; <input type="submit" class="btn btn-outline-success" value="Add to Cart">
+    </form>
+        <br><div class="col-md-3">
+          <div class="card border-primary mb-3" style="width: 40rex; height: 23rem;">
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+   <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit"  class ="btn btn-primary"></center>
+	</form></div>
+
+	</div>
+</div>
+</div>
+	<br><br><br>
+    <div class="container">
+	<h6>Reviews:</h6>
+    
+    {% for i in reviews %}
+
+    {{forloop.counter}} - {{i.review}} <br>
+    at {{i.created_at}} by {{user}} <br>
+
+    {% endfor %}
+
+</div>
+</div>
+
+{% endblock %}

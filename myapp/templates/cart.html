@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+</style>
+<center><h1>SHOPPING CART</h1>
+<div class="container">
+<div class="row">
+  <div class="col-lg-12">
+<div class="box-element">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in c %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.product}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.total}}</td>
+        <td>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="item_id" value="{{i.id}}">
+            <input class="btn btn-danger" type="submit" name="delete" value="Delete">
+        </form>
+    </td>
+      </tr>
+      
+      {% endfor %}
+    </tbody>
+  </table><br>
+  &nbsp;&nbsp;Total: ₹{{t}}<br>
+  <br>
+&nbsp;&nbsp;<a class="btn btn-secondary" href="{% url 'myapp:address_view' %}">Order</a>
+&nbsp;&nbsp;&nbsp;
+<a class="btn btn-secondary" href="{% url 'myapp:category' %}">Back</a>
+</div></div></div></div></center>
+  {% endblock %}

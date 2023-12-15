@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .gradient-custom {
+background: -webkit-linear-gradient(left, #d3d2db, #0aea49);
+}
+
+.card-custom {
+border-bottom-left-radius: 10% 50%;
+border-top-left-radius: 10% 50%;
+background-color: #1478dd ;
+}
+
+
+.input-custom {
+background-color: rgb(234, 240, 236) ;
+}
+
+.white-text {
+color: hsl(0, 17%, 91%);
+font-weight: 100 ;
+font-size: 14px;
+}
+
+.back-button {
+background-color: hsl(251, 94%, 49%);
+font-weight: 700;
+color: rgb(17, 214, 43) ;
+margin-top: 50px ;
+}
+</style>
+<div class="row mt-3 mx-3" style="margin-top:25px ;">
+    <div class="col-md-3">
+      <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
+        <i id="animationDemo"  data-mdb-animation="slide-right" data-mdb-toggle="animation"
+          data-mdb-animation-reset="true" data-mdb-animation-start="onScroll"
+          data-mdb-animation-on-scroll="repeat" style="color: #200bdc ;" class="fas fa-3x fa-shipping-fast text-primary"></i>
+        <h3 class="mt-3 text-dark">Welcome</h3>
+      </div>
+      <div class="text-center">
+        &nbsp;&nbsp;&nbsp;<a href="{% url 'myapp:category' %}" type="submit" class="btn btn-white btn-rounded back-button">Back to Home</a>
+      </div>
+  
+  
+    </div>
+    <div class="col-md-9 justify-content-center">
+      <div class="card card-custom pb-4">
+        <div class="card-body mt-0 mx-5">
+          <div class="text-center mb-3 pb-2 mt-3">
+            <h4 style="color: #495057 ;">Delivery Details</h4>
+          </div>
+  
+          <form class="mb-0"  method="POST">
+            {% csrf_token %}
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="form9Example1">Name</label>
+                  <input type="text" required id="form9Example1" class="form-control input-custom" name="name">
+                </div>
+              </div>
+              </div>
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="form9Example3">City</label>
+                  <input type="text" required id="form9Example1" class="form-control input-custom" name="city">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="form9Example4">pincode</label>
+                  <input type="number" required id="form9Example1" class="form-control input-custom" name="pincode">
+                </div>
+              </div>
+            </div>
+                <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <label class="form-label" for="form9Example6">Mobile number</label>
+                        <input type="number" required id="form9Example1" class="form-control input-custom" name="mobile_number">
+                      </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="typeEmail">Email</label>
+                  <input type="email"  required id="typeEmail" class="form-control input-custom" name="email"/>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                  <div class="form-outline">
+                    <label class="form-label" for="form9Example6">Address</label>
+                    <input type="text" required id="form9Example6" class="form-control input-custom" name="address"/>
+                  </div>
+  <br>
+
+            <div class="float-end">
+              <button type="submit"  class="btn btn-primary btn-rounded" style="background-color: #0df02b;"">submit </button>
+              <!-- Submit button -->
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
